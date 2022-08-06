@@ -1,0 +1,164 @@
+@mixin link($hover, $active, ) {
+
+    &:hover {
+        color: $hover;
+    }
+
+    &:active {
+        color: $active;
+    }
+}
+.wrapper {
+    color: white;
+    min-width: 100%;
+    display: grid;
+    grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer"
+    ;
+}
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    grid-area: header;
+    padding: 20px;
+    background-image: url("https://ilyakhasanov.ru/images/background/52.png");
+    @media (max-width: 678px) {
+    display: block;
+    }
+    .header__menu {
+        .header__list {
+            .header__link {
+                display: flex;
+                display: inline-flex;
+                text-align: center;
+                font-size: 30px;
+                color: white;
+                padding-right: 20px;
+                @include link(green, yellow);
+                @media (max-width: 678px){
+                    display: flex;
+                    flex-direction: row;
+                    padding-bottom: 15px;
+                }
+            }
+        }
+        
+            
+    }
+    
+       
+}
+
+
+//main------------------------------------------------------------//
+.main {
+    background-image: url("https://ilyakhasanov.ru/images/background/52.png");
+    grid-area: main;
+    padding: 20% 10%;
+    display: grid;
+    grid-template: 1fr / 1fr minmax(0, 0) minmax(auto, 1100px) 1fr;
+    color: white;
+    @media (max-width:610px){
+        padding: 20% 0;
+    }
+    .reg {
+        padding: 0px 0px 0px 0;
+        grid-column: 3/4;
+        .reg__title {
+            margin-bottom: 20px;
+            font-size: 38px;
+            text-align: center;
+        }
+        .reg__input {
+            .reg__items {
+                display: grid;
+                gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                .reg__item__btn{
+                    display: grid;
+                    grid-column: 1/3;
+                    @media  (max-width:489px) {
+                        grid-column: 1/2;
+                    }
+                    .reg__btn{
+                        background-color: black;
+                        border: none;
+                        color: white;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        padding: 14px 40px;
+                }
+            }
+                .reg__item {
+                    display: grid;
+                    align-items: center;
+                    .reg__item__title {
+                        margin-bottom: 5px;
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                
+                    .reg__item__input {
+                        background-color: black;
+                        color: white;
+                        font-size: 20px;
+                        border-radius: 20px;
+                        border: 1px solid white;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    } 
+}
+
+
+
+
+//footer----------------------------------------------------------//
+.footer {
+    height: 100%;
+    padding: 15px;
+    background-image: url("https://ilyakhasanov.ru/images/background/52.png");
+    grid-area: footer;
+    align-items: center;
+    font-size: 28px;
+    display: grid;
+    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+    color: white;
+}
+
+@media (min-width: 550px) {
+    .footer__copy {
+        grid-column: 2 / 3;
+    }
+
+    .footer__text {
+        grid-column: 3 / 4;
+        text-align: right;
+    }
+}
+
+@media (max-width: 550px) {
+    .footer {
+        grid-template: 1fr 1fr / 1fr;
+        justify-items: center;
+    }
+
+    .footer__copy {
+        order: 2;
+    }
+
+    .footer__text {
+        order: 1;
+    }
+}
